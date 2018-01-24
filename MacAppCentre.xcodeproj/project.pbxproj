@@ -13,6 +13,7 @@
 		BE895DCF2019351E0071D35E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE895DCD2019351E0071D35E /* Main.storyboard */; };
 		BE895DDB2019351E0071D35E /* MacAppCentreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DDA2019351E0071D35E /* MacAppCentreTests.swift */; };
 		BE895DE62019351E0071D35E /* MacAppCentreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DE52019351E0071D35E /* MacAppCentreUITests.swift */; };
+		BE895DF4201938E50071D35E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DF3201938E50071D35E /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		BE895DE12019351E0071D35E /* MacAppCentreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacAppCentreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE895DE52019351E0071D35E /* MacAppCentreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppCentreUITests.swift; sourceTree = "<group>"; };
 		BE895DE72019351E0071D35E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE895DF3201938E50071D35E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				BE895DCD2019351E0071D35E /* Main.storyboard */,
 				BE895DD02019351E0071D35E /* Info.plist */,
 				BE895DD12019351E0071D35E /* MacAppCentre.entitlements */,
+				BE895DF3201938E50071D35E /* SettingsViewController.swift */,
 			);
 			path = MacAppCentre;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			files = (
 				BE895DCA2019351E0071D35E /* ViewController.swift in Sources */,
 				BE895DC82019351E0071D35E /* AppDelegate.swift in Sources */,
+				BE895DF4201938E50071D35E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
