@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21248C8C201A69F7006210F9 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21248C8B201A69F7006210F9 /* SecureStore.swift */; };
+		21248C8E201A84C1006210F9 /* SecureCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21248C8D201A84C1006210F9 /* SecureCredential.swift */; };
 		BE895DC82019351E0071D35E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DC72019351E0071D35E /* AppDelegate.swift */; };
 		BE895DCA2019351E0071D35E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DC92019351E0071D35E /* ViewController.swift */; };
 		BE895DCC2019351E0071D35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE895DCB2019351E0071D35E /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21248C8B201A69F7006210F9 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		21248C8D201A84C1006210F9 /* SecureCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureCredential.swift; sourceTree = "<group>"; };
 		BE895DC42019351E0071D35E /* MacAppCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacAppCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE895DC72019351E0071D35E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE895DC92019351E0071D35E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				BE895DD02019351E0071D35E /* Info.plist */,
 				BE895DD12019351E0071D35E /* MacAppCentre.entitlements */,
 				BE895DF3201938E50071D35E /* SettingsViewController.swift */,
+				21248C8B201A69F7006210F9 /* SecureStore.swift */,
+				21248C8D201A84C1006210F9 /* SecureCredential.swift */,
 			);
 			path = MacAppCentre;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21248C8E201A84C1006210F9 /* SecureCredential.swift in Sources */,
+				21248C8C201A69F7006210F9 /* SecureStore.swift in Sources */,
 				BE895DCA2019351E0071D35E /* ViewController.swift in Sources */,
 				BE895DC82019351E0071D35E /* AppDelegate.swift in Sources */,
 				BE895DF4201938E50071D35E /* SettingsViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import Cocoa
 class SettingsViewController : NSViewController
 {
 	@IBOutlet weak var privateTokenField: NSSecureTextField!
+
 	override func viewDidLoad()
 	{
 	}
