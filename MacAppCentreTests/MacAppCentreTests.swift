@@ -27,8 +27,13 @@ class MacAppCentreTests: XCTestCase
 	{
 		let cred = SecureCredential(userName : "sparky", password : "Secret", server : "ms.appcenter")
         let sec = SecureStore()
-		let secResult : Bool = sec.AddItem(credential : cred)
-		XCTAssertTrue(secResult)
+		let existing : SecureCredential? = sec.FindItem(OnServer: "ms.appcenter", ForUser: "sparky")
+
+		if existing == nil
+		{
+			let secResult : Bool = sec.AddItem(credential : cred)
+			XCTAssertTrue(secResult)
+		}
     }
     
     func testPerformanceExample()
