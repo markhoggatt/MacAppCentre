@@ -11,6 +11,10 @@ import XCTest
 
 class MacAppCentreTests: XCTestCase
 {
+	let testUser : String = "sparky"
+	let testPassword : String = "secret"
+	let testServer : String = "ms.appcenter"
+	
     override func setUp()
 	{
         super.setUp()
@@ -25,9 +29,9 @@ class MacAppCentreTests: XCTestCase
     
     func testSecureStore()
 	{
-		let cred = SecureCredential(userName : "sparky", password : "Secret", server : "ms.appcenter")
+		let cred = SecureCredential(userName : testUser, password : testPassword, server : testServer)
         let sec = SecureStore()
-		let existing : SecureCredential? = sec.FindItem(OnServer: "ms.appcenter", ForUser: "sparky")
+		let existing : SecureCredential? = sec.FindItem(OnServer: testServer, ForUser: testUser)
 
 		if existing == nil
 		{
