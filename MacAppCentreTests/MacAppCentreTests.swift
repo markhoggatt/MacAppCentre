@@ -32,12 +32,17 @@ class MacAppCentreTests: XCTestCase
 		let cred = SecureCredential(userName : testUser, password : testPassword, server : testServer)
         let sec = SecureStore()
 		let existing : SecureCredential? = sec.FindItem(OnServer: testServer, ForUser: testUser)
-
-		if existing == nil
+		if existing != nil
 		{
-			let secResult : Bool = sec.AddItem(credential : cred)
-			XCTAssertTrue(secResult)
+			let delResult : Bool = sec.DeleteItem(ForServer: testServer, WithUser: testUser)
+			XCTAssertTrue(delResult)
 		}
+
+		let secResult : Bool = sec.AddItem(credential : cred)
+		XCTAssertTrue(secResult)
+
+		let delResult2 : Bool = sec.DeleteItem(ForServer: testServer, WithUser: testUser)
+		XCTAssertTrue(delResult2)
     }
     
     func testPerformanceExample()
