@@ -51,12 +51,14 @@ class SecureStore
 			return nil
 		}
 
-		guard let pwd = foundItem as? String
+		guard let pwdData = foundItem as? Data
 		else
 		{
 			return nil
 		}
 
+		let pwd : String = String(data: pwdData, encoding: String.Encoding.utf8)!
+		
 		return SecureCredential(userName: usr, password: pwd, server: svr)
 	}
 
