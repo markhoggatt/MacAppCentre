@@ -15,7 +15,7 @@ class SettingsViewController : NSViewController
 	override func viewDidLoad()
 	{
 	}
-
+	
 	override var representedObject: Any?
 	{
 		didSet

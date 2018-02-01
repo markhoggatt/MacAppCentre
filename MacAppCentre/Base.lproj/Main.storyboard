@@ -724,6 +724,9 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="fiM-sj-7dd" id="uM3-RP-xyX"/>
+                                </connections>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CTk-6B-fS8">
                                 <rect key="frame" x="82" y="261" width="122" height="17"/>
