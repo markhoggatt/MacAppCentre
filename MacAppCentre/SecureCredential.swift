@@ -6,8 +6,10 @@
 //  Copyright © 2018 Mark Hoggatt. All rights reserved.
 //
 
+import Foundation
+
 /// Holds parameters for secure storage
-struct SecureCredential
+struct SecureCredential : Equatable
 {
 	/// The user name that this structure represents.
 	var userName : String
@@ -15,6 +17,32 @@ struct SecureCredential
 	/// The password to secure.
 	var password : String
 
-	/// The server to which this credential relates.
-	var server : String
+	/// The name that best describes this credential.
+	var serverName : String
+
+	/// The server URL.
+	var serverUrl : URL
+
+	/// Compare two objects.
+	static func ==(lhs: SecureCredential, rhs: SecureCredential) -> Bool
+	{
+		if lhs.userName != rhs.userName
+		{
+			return false
+		}
+		if lhs.serverName != rhs.serverName
+		{
+			return false
+		}
+		if lhs.serverUrl != rhs.serverUrl
+		{
+			return false
+		}
+		if lhs.password != rhs.password
+		{
+			return false
+		}
+
+		return true
+	}
 }

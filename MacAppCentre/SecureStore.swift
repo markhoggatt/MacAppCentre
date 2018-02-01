@@ -25,10 +25,13 @@ class SecureStore
 			return false
 		}
 
+		let serverUrl : String = cred.serverUrl.description
+
 		let secQuery : [String : Any] = [kSecClass as String : kSecClassInternetPassword,
 										 kSecAttrAccount as String : cred.userName,
-										 kSecAttrServer as String : cred.server,
-										 kSecValueData as String : pwd]
+										 kSecAttrServer as String : cred.serverName,
+										 kSecValueData as String : pwd,
+										 kSecAttrPath as String : serverUrl]
 		let status : OSStatus = SecItemAdd(secQuery as CFDictionary, nil)
 
 		return status == errSecSuccess
@@ -51,17 +54,36 @@ class SecureStore
 			return nil
 		}
 
-		guard let pwdData = foundItem as? Data
+		guard let secDict = foundItem as? [String : Any]
 		else
 		{
 			return nil
 		}
 
-		let pwd : String = String(data: pwdData, encoding: String.Encoding.utf8)!
-		
-		return SecureCredential(userName: usr, password: pwd, server: svr)
+		guard let pwdData = secDict[kSecValueData as String] as? Data,
+		let pwd : String = String(data: pwdData, encoding: String.Encoding.utf8),
+		let serverPath : String = secDict[kSecAttrPath as String] as? String
+		else
+		{
+			return nil
+		}
+
+		guard let serverUrl = URL(string: serverPath)
+		else
+		{
+			return nil
+		}
+
+		return SecureCredential(userName: usr, password: pwd, serverName: svr, serverUrl: serverUrl)
 	}
 
+
+	/// Delete a Keychain entry.
+	///
+	/// - Parameters:
+	///   - svr: Server name
+	///   - usr: User name
+	/// - Returns: true if the entry was successfully deleted, otherwise false.
 	func DeleteItem(ForServer svr : String, WithUser usr : String) -> Bool
 	{
 		let searchQuery = BuildSearchQuery(serverName: svr, userName: usr)
@@ -76,6 +98,7 @@ class SecureStore
 											kSecAttrServer as String : svr,
 											kSecAttrAccount as String : usr,
 											kSecMatchLimit as String : kSecMatchLimitOne,
+											kSecReturnAttributes as String : true,
 											kSecReturnData as String : true]
 	}
 }

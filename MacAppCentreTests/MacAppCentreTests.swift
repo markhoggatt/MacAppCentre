@@ -11,9 +11,10 @@ import XCTest
 
 class MacAppCentreTests: XCTestCase
 {
-	let testUser : String = "sparky"
-	let testPassword : String = "secret"
-	let testServer : String = "ms.appcenter"
+	let testUser : String = "sparks"
+	let testPassword : String = "secretista"
+	let testServer : String = "ms appcenter"
+	let testUrl : String = "https://www.appcentre.eu/login"
 	
     override func setUp()
 	{
@@ -26,10 +27,19 @@ class MacAppCentreTests: XCTestCase
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
+
+    /// Test normal Add, find and delete operations on the Keychain wrapper object.
     func testSecureStore()
 	{
-		let cred = SecureCredential(userName : testUser, password : testPassword, server : testServer)
+		guard let serverUrl = URL(string: testUrl)
+		else
+		{
+			XCTFail()
+			return
+		}
+
+		let cred = SecureCredential(userName : testUser, password : testPassword, serverName : testServer, serverUrl : serverUrl)
         let sec = SecureStore()
 		let existing : SecureCredential? = sec.FindItem(OnServer: testServer, ForUser: testUser)
 		if existing != nil
@@ -40,6 +50,14 @@ class MacAppCentreTests: XCTestCase
 
 		let secResult : Bool = sec.AddItem(credential : cred)
 		XCTAssertTrue(secResult)
+
+		guard let secFound : SecureCredential = sec.FindItem(OnServer: testServer, ForUser: testUser)
+		else
+		{
+			XCTFail()
+			return;
+		}
+		XCTAssertEqual(secFound, cred)
 
 		let delResult2 : Bool = sec.DeleteItem(ForServer: testServer, WithUser: testUser)
 		XCTAssertTrue(delResult2)
