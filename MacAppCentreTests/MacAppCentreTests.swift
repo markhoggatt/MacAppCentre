@@ -15,6 +15,9 @@ class MacAppCentreTests: XCTestCase
 	let testPassword : String = "secretista"
 	let testServer : String = "ms appcenter"
 	let testUrl : String = "https://www.appcentre.eu/login"
+
+	let testJsonResponse : String = "{\"id\":\"ea71de61-791a-45e4-bc86-2c25c2fcd153\",\"display_name\":\"Mark Hoggatt\",\"email\":\"mark.hoggatt@paxton-access.co.uk\",\"name\":\"ProEuropa\",\"avatar_url\":null,\"can_change_password\":false,\"created_at\":\"2017-11-27T07:31:03.000Z\",\"origin\":\"appcenter\"}"
+	let expectedResponseLen : Int = 244
 	
     override func setUp()
 	{
@@ -62,6 +65,16 @@ class MacAppCentreTests: XCTestCase
 		let delResult2 : Bool = sec.DeleteItem(ForServer: testServer, WithUser: testUser)
 		XCTAssertTrue(delResult2)
     }
+
+	func testJsonDecode()
+	{
+		let decoder = JSONDecoder()
+		let jsonData : Data = testJsonResponse.data(using: String.Encoding.utf8)!
+		XCTAssertNotNil(jsonData)
+		XCTAssertEqual(244, jsonData.count)
+		let userRecord = try? decoder.decode(LoggedInUser.self, from: jsonData)
+		XCTAssertNotNil(userRecord)
+	}
     
     func testPerformanceExample()
 	{

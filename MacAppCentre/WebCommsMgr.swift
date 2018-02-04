@@ -47,6 +47,20 @@ class WebCommsMgr
 				return
 			}
 
+			guard let httpResp = urlResp as? HTTPURLResponse
+			else
+			{
+				NSLog("Unexpected URL response.")
+				return
+			}
+
+			if httpResp.statusCode != 200
+			{
+				let responseText : String = String(data: recvdData!, encoding: String.Encoding.utf8)!
+				NSLog("Request was not valid. REsponse was: \(responseText)")
+				return
+			}
+
 			self.jsonResponseDelegate!.DidRespondWithJson(jsonData: recvdData!)
 		}
 

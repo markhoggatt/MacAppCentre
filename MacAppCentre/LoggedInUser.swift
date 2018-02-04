@@ -14,8 +14,7 @@ struct LoggedInUser : Codable
 	var display_name : String
 	var email : String
 	var name : String
-	var avatar_url : String
 	var can_change_password : Bool
-	var created_at : Date
+	var created_at : String
 	var origin : String
 }
