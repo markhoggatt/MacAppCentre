@@ -8,10 +8,11 @@
 
 import Cocoa
 
-class SettingsViewController : NSViewController, NSTextFieldDelegate
+class SettingsViewController : NSViewController, NSTextFieldDelegate, JsonRepondable
 {
 	let siteName : String = "Microsoft App Centre"
 	let siteUrl : String = "https://api.appcenter.ms/"
+	var jsonHttpComms : WebCommsMgr?
 
 	@IBOutlet weak var privateTokenField: NSSecureTextField!
 	@IBOutlet weak var userNameTextField: NSTextField!
@@ -22,7 +23,7 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate
 
 	override func viewDidLoad()
 	{
-
+		jsonHttpComms = WebCommsMgr()
 	}
 	
 	override var representedObject: Any?
@@ -40,5 +41,52 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate
 
 	@IBAction func signInButtonClicked(_ sender: NSButton)
 	{
+		guard jsonHttpComms != nil
+		else
+		{
+			return
+		}
+
+		if jsonHttpComms!.jsonResponseDelegate == nil
+		{
+			jsonHttpComms!.jsonResponseDelegate = self
+		}
+
+		let webApiCall : String = siteUrl + "v0.1/user"
+		jsonHttpComms!.MakeRequestToServer(atUrl: webApiCall, withContent: "", usingToken: privateTokenField.stringValue)
+	}
+
+	func DidRespondWithJson(jsonData: Data)
+	{
+		let decoder = JSONDecoder()
+
+		do
+		{
+			guard let userRecord = try? decoder.decode(LoggedInUser.self, from: jsonData)
+			else
+			{
+				NSLog("JSON decode failed")
+				return
+			}
+
+			DispatchQueue.main.async
+			{
+				self.userNameTextField.stringValue = userRecord.display_name
+				self.emailTextField.stringValue = userRecord.email
+				self.aliasNameTextField.stringValue = userRecord.name
+				self.creationDateTextField.stringValue = userRecord.created_at.description
+
+				self.signInButton.isEnabled = false
+			}
+		}
+	}
+
+	deinit
+	{
+		if jsonHttpComms != nil
+		{
+			jsonHttpComms!.jsonResponseDelegate = nil
+			jsonHttpComms = nil
+		}
 	}
 }

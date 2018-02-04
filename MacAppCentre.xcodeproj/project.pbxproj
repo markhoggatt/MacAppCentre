@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		21248C8C201A69F7006210F9 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21248C8B201A69F7006210F9 /* SecureStore.swift */; };
 		21248C8E201A84C1006210F9 /* SecureCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21248C8D201A84C1006210F9 /* SecureCredential.swift */; };
+		21901C832025B278008D965E /* WebCommsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21901C822025B278008D965E /* WebCommsMgr.swift */; };
+		21E3586D2027158E00192274 /* JsonRespondable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3586C2027158E00192274 /* JsonRespondable.swift */; };
+		21E3586F2027225000192274 /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3586E2027225000192274 /* LoggedInUser.swift */; };
 		BE895DC82019351E0071D35E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DC72019351E0071D35E /* AppDelegate.swift */; };
 		BE895DCA2019351E0071D35E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE895DC92019351E0071D35E /* ViewController.swift */; };
 		BE895DCC2019351E0071D35E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE895DCB2019351E0071D35E /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 /* Begin PBXFileReference section */
 		21248C8B201A69F7006210F9 /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		21248C8D201A84C1006210F9 /* SecureCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureCredential.swift; sourceTree = "<group>"; };
+		21901C822025B278008D965E /* WebCommsMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebCommsMgr.swift; sourceTree = "<group>"; };
+		21E3586C2027158E00192274 /* JsonRespondable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonRespondable.swift; sourceTree = "<group>"; };
+		21E3586E2027225000192274 /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
 		BE895DC42019351E0071D35E /* MacAppCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacAppCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE895DC72019351E0071D35E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE895DC92019351E0071D35E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +117,9 @@
 				BE895DF3201938E50071D35E /* SettingsViewController.swift */,
 				21248C8B201A69F7006210F9 /* SecureStore.swift */,
 				21248C8D201A84C1006210F9 /* SecureCredential.swift */,
+				21901C822025B278008D965E /* WebCommsMgr.swift */,
+				21E3586C2027158E00192274 /* JsonRespondable.swift */,
+				21E3586E2027225000192274 /* LoggedInUser.swift */,
 			);
 			path = MacAppCentre;
 			sourceTree = "<group>";
@@ -266,9 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E3586D2027158E00192274 /* JsonRespondable.swift in Sources */,
 				21248C8E201A84C1006210F9 /* SecureCredential.swift in Sources */,
 				21248C8C201A69F7006210F9 /* SecureStore.swift in Sources */,
 				BE895DCA2019351E0071D35E /* ViewController.swift in Sources */,
+				21901C832025B278008D965E /* WebCommsMgr.swift in Sources */,
+				21E3586F2027225000192274 /* LoggedInUser.swift in Sources */,
 				BE895DC82019351E0071D35E /* AppDelegate.swift in Sources */,
 				BE895DF4201938E50071D35E /* SettingsViewController.swift in Sources */,
 			);
