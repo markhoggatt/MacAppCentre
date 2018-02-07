@@ -12,7 +12,9 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate, JsonRepond
 {
 	let siteName : String = "Microsoft App Centre"
 	let siteUrl : String = "https://api.appcenter.ms/"
+	let tokenUser : String = "appcentreUser"
 	var jsonHttpComms : WebCommsMgr?
+	var tokenWasFound : Bool = false
 
 	@IBOutlet weak var privateTokenField: NSSecureTextField!
 	@IBOutlet weak var userNameTextField: NSTextField!
@@ -23,7 +25,9 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate, JsonRepond
 
 	override func viewDidLoad()
 	{
+		self.title = "App Center - Settings"
 		jsonHttpComms = WebCommsMgr()
+		PrimeTokenField()
 	}
 	
 	override var representedObject: Any?
@@ -69,6 +73,14 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate, JsonRepond
 				return
 			}
 
+			let store = SecureStore()
+			guard let targetUrl = URL(string: siteUrl)
+			else
+			{
+				NSLog("URL was not properly formed: \(siteUrl)")
+				return
+			}
+
 			DispatchQueue.main.async
 			{
 				self.userNameTextField.stringValue = userRecord.display_name
@@ -77,8 +89,32 @@ class SettingsViewController : NSViewController, NSTextFieldDelegate, JsonRepond
 				self.creationDateTextField.stringValue = userRecord.created_at.description
 
 				self.signInButton.isEnabled = false
+
+				let cred = SecureCredential(userName: self.tokenUser, password: self.privateTokenField.stringValue,
+											serverName: self.siteName, serverUrl: targetUrl)
+				let addedOk = store.AddItem(credential: cred)
+				if addedOk == false
+				{
+					NSLog("Failed to store credential for future use.")
+				}
 			}
 		}
+	}
+
+	func PrimeTokenField()
+	{
+		let store = SecureStore()
+		guard let token : SecureCredential = store.FindItem(OnServer: siteName, ForUser: tokenUser)
+			else
+		{
+			privateTokenField.stringValue = ""
+			tokenWasFound = false
+			return
+		}
+
+		privateTokenField.stringValue = token.password
+		tokenWasFound = true
+		signInButton.isEnabled = privateTokenField.stringValue.count > 0
 	}
 
 	deinit

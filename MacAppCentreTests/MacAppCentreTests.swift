@@ -58,7 +58,7 @@ class MacAppCentreTests: XCTestCase
 		else
 		{
 			XCTFail()
-			return;
+			return
 		}
 		XCTAssertEqual(secFound, cred)
 
@@ -72,8 +72,20 @@ class MacAppCentreTests: XCTestCase
 		let jsonData : Data = testJsonResponse.data(using: String.Encoding.utf8)!
 		XCTAssertNotNil(jsonData)
 		XCTAssertEqual(244, jsonData.count)
-		let userRecord = try? decoder.decode(LoggedInUser.self, from: jsonData)
-		XCTAssertNotNil(userRecord)
+		guard let userRecord = try? decoder.decode(LoggedInUser.self, from: jsonData)
+		else
+		{
+			XCTFail()
+			return
+		}
+
+		XCTAssertEqual("ea71de61-791a-45e4-bc86-2c25c2fcd153", userRecord.id)
+		XCTAssertEqual("Mark Hoggatt", userRecord.display_name)
+		XCTAssertEqual("mark.hoggatt@paxton-access.co.uk", userRecord.email)
+		XCTAssertEqual("ProEuropa", userRecord.name)
+		XCTAssertFalse(userRecord.can_change_password)
+		XCTAssertEqual("2017-11-27T07:31:03.000Z", userRecord.created_at)
+		XCTAssertEqual("appcenter", userRecord.origin)
 	}
     
     func testPerformanceExample()
