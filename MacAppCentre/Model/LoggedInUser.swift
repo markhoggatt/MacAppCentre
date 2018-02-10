@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+/// Logged in user record. GET URL = https://api.appcenter.ms/v0.1/user
 struct LoggedInUser : Codable
 {
 	var id : String
