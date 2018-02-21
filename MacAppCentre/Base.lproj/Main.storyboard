@@ -804,13 +804,13 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MacAppCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="783" height="564"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="743"/>
+            <point key="canvasLocation" x="230.5" y="890"/>
         </scene>
     </scenes>
 </document>
